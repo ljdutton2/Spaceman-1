@@ -1,5 +1,8 @@
 from random import choice
 
+
+
+
 def load_word():
     '''
     Fn reads text file of words and selects one randomly (secret word).  
@@ -16,6 +19,12 @@ def load_word():
 
     return secret_word           #secret word returned
 
+
+
+
+
+
+
 def is_word_guessed(secret_word, letters_guessed):
     '''
     A function that checks if all the letters of the secret word
@@ -31,16 +40,22 @@ def is_word_guessed(secret_word, letters_guessed):
     # Loop through the letters in the secret_word and check if a letter
     # not in lettersGuessed
     
-    lenthofsecretword = len(secret_word)
+    lengthofsecretword = len(secret_word)
     i = 0
 
     for (letter in letters_guessed):
         if (secret_word.count(letter) > 0):
             i += secret_word.count(letter)
 
-    if lenthofsecretword == i
+    if lengthofsecretword == i
         return True
     else False
+
+
+
+
+
+
 
 
 def get_guessed_word (secret_word, letters_guessed):
@@ -58,8 +73,22 @@ def get_guessed_word (secret_word, letters_guessed):
     # Loop through the letters in secret word and build a string that shows the
     # letters that have been guessed correctly so far that are saved in 
     # letters_guessed and underscores for the letter that have not been guessed
+    display_array = ["_"] * len(secret_word)
 
+    for (letter in letters_guessed):
+        i = 0
+        for (dif_letter in secret_word):
+            if (letter == dif_letter):
+            display_array[i] = letter
+            i = i + 1
+    return display_array()
     #pass
+
+
+
+
+
+
 
 
 def is_guess_in_word(guess, secret_word):
@@ -80,6 +109,9 @@ def is_guess_in_word(guess, secret_word):
         
 
     #pass
+
+
+
 
 
 
@@ -111,14 +143,17 @@ def spaceman(secret_word):
     
 
     #TODO: Check if the guessed letter is in the secret or not and give the player feedback
+    if (is_guess_in_word(guess, secret_word)):
+        return ('nice, ')
+    else return ('nope, try again')
+
+
 
     #TODO: show the guessed word so far
+    get_guessed_word(secret_word, letters_guessed)
 
     #TODO: check if the game has been won or lost
-
-
-
-
+    is_word_guessed(secret_word, letters_guessed)
 
 
 #These function calls that will start the game
