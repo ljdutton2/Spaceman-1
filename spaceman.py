@@ -1,4 +1,4 @@
-import random
+from random import choice
 
 def load_word():
     '''
@@ -11,10 +11,10 @@ def load_word():
     words_list = f.readlines()   # returns list w/ each line as list item 
     f.close()                    # closes opened file. Cannot be read anymore
 
-    words_list = words_list[0].split(' ')  # split a string into a list
-    secret_word = random.choice(words_list)  # random word from list
+    words_list = words_list[0].split(' ')   # split a string into a list
+    secret_word = choice(words_list)        # random word from list
 
-    return secret_word      #secret word returned
+    return secret_word           #secret word returned
 
 def is_word_guessed(secret_word, letters_guessed):
     '''
@@ -30,13 +30,17 @@ def is_word_guessed(secret_word, letters_guessed):
     '''
     # Loop through the letters in the secret_word and check if a letter
     # not in lettersGuessed
-    correctly_guessed_letters=[]
+    
+    lenthofsecretword = len(secret_word)
     i = 0
 
-    for (guessed_letter in secret_word):
-        if (secret_word.find(guessed_letter) == True):
-            guessed_letter = correctly_guessed_letters[i]
-            i +=
+    for (letter in letters_guessed):
+        if (secret_word.count(letter) > 0):
+            i += secret_word.count(letter)
+
+    if lenthofsecretword == i
+        return True
+    else False
 
 
 def get_guessed_word (secret_word, letters_guessed):
@@ -55,7 +59,7 @@ def get_guessed_word (secret_word, letters_guessed):
     # letters that have been guessed correctly so far that are saved in 
     # letters_guessed and underscores for the letter that have not been guessed
 
-    pass
+    #pass
 
 
 def is_guess_in_word(guess, secret_word):
@@ -69,7 +73,13 @@ def is_guess_in_word(guess, secret_word):
     '''
     #TODO: check if the letter guess is in the secret word
 
-    pass
+    for (letter in secret_word):
+        if (guess == letter):
+            return True
+    return False
+        
+
+    #pass
 
 
 
@@ -84,7 +94,21 @@ def spaceman(secret_word):
 
     #TODO: show the player information about the game according to the project spec
 
+    word_blanks = []
+    i = 0
+    for (i in range(len(secret_word)):
+        word_blanks[i] = ('_')
+        i +=
+    
+    print word_blanks
+
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
+    guess = input('Guess a letter..')
+    while (len(guess) != 1 or type(guess) != str or if guess is in letters_guessed):
+        print('No thanks. One letter. Try again.')
+        guess = input('Guess a letter..')
+    
+    
 
     #TODO: Check if the guessed letter is in the secret or not and give the player feedback
 
@@ -99,6 +123,6 @@ def spaceman(secret_word):
 
 #These function calls that will start the game
 secret_word = load_word()
-spaceman(load_word())
+spaceman(secret_word)
 
 
