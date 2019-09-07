@@ -1,3 +1,5 @@
+
+
 from random import choice
 
 
@@ -43,13 +45,14 @@ def is_word_guessed(secret_word, letters_guessed):
     lengthofsecretword = len(secret_word)
     i = 0
 
-    for (letter in letters_guessed):
-        if (secret_word.count(letter) > 0):
-            i += secret_word.count(letter)
+    for letter in letters_guessed:
+        number_of_letters = secret_word.count(letter)
+        if (number_of_letters > 0):
+            i += number_of_letters
 
-    if lengthofsecretword == i
+    if lengthofsecretword == i:
         return True
-    else False
+    else: False
 
 
 
@@ -73,14 +76,15 @@ def get_guessed_word (secret_word, letters_guessed):
     # Loop through the letters in secret word and build a string that shows the
     # letters that have been guessed correctly so far that are saved in 
     # letters_guessed and underscores for the letter that have not been guessed
+
     display_array = ["_"] * len(secret_word)
 
-    for (letter in letters_guessed):
+    for letter in letters_guessed:
         i = 0
-        for (dif_letter in secret_word):
+        for dif_letter in secret_word:
             if (letter == dif_letter):
-            display_array[i] = letter
-            i = i + 1
+                display_array[i] = letter
+                i = i + 1
     return display_array()
     #pass
 
@@ -102,7 +106,7 @@ def is_guess_in_word(guess, secret_word):
     '''
     #TODO: check if the letter guess is in the secret word
 
-    for (letter in secret_word):
+    for letter in secret_word:
         if (guess == letter):
             return True
     return False
@@ -128,32 +132,37 @@ def spaceman(secret_word):
 
     word_blanks = []
     i = 0
-    for (i in range(len(secret_word)):
+    for letter in secret_word:
         word_blanks[i] = ('_')
-        i +=
+        i += 1
     
-    print word_blanks
+    print (word_blanks)
 
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
     guess = input('Guess a letter..')
-    while (len(guess) != 1 or type(guess) != str or if guess is in letters_guessed):
-        print('No thanks. One letter. Try again.')
-        guess = input('Guess a letter..')
-    
+    letters_guessed = []
+    letters_guessed += guess
+
+    while (len(guess) != 1 or type(guess) != str):
+        if (guess in letters_guessed):
+            print('No thanks. One letter. Try again.')
+            guess = input('Guess a letter..')
     
 
     #TODO: Check if the guessed letter is in the secret or not and give the player feedback
     if (is_guess_in_word(guess, secret_word)):
         return ('nice, ')
-    else return ('nope, try again')
-
+    else:
+        return ('nope, try again')
 
 
     #TODO: show the guessed word so far
     get_guessed_word(secret_word, letters_guessed)
 
+
     #TODO: check if the game has been won or lost
     is_word_guessed(secret_word, letters_guessed)
+
 
 
 #These function calls that will start the game
