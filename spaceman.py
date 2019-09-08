@@ -91,14 +91,15 @@ def get_guessed_word (secret_word, letters_guessed):
     return display_array
     #pass
 
-display_array2 = ""
-def new_get_guessed_word (secret_word, letters_guessed)
+
+def new_get_guessed_word (secret_word, letters_guessed):
+    display_array2 = " "
     for letter in secret_word:
-        if letter in letters_guessed
-            display_array2.append(letter)
+        if letter in letters_guessed:
+            display_array2 += letter
         else:
-            display_array2.append('_')
-    return display_array2
+            display_array2 += ('_')
+    return print(display_array2)
 
 
 
@@ -185,7 +186,7 @@ def spaceman(secret_word):
 
 #These function calls that will start the game
 secret_word = load_word()
-letters_guessed = ["c", "a", "t"]
+letters_guessed = ["c", "l", "t"]
 new_get_guessed_word('cat', letters_guessed)
 
 #paceman(secret_word)
