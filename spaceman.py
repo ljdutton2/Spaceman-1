@@ -85,7 +85,7 @@ def get_guessed_word (secret_word, letters_guessed):
             if (letter == dif_letter):
                 display_array[i] = letter
                 i = i + 1
-    return display_array()
+    return display_array
     #pass
 
 
@@ -130,24 +130,29 @@ def spaceman(secret_word):
 
     #TODO: show the player information about the game according to the project spec
 
-    word_blanks = []
-    i = 0
-    for letter in secret_word:
-        word_blanks[i] = ('_')
-        i += 1
-    
-    print (word_blanks)
+    print('')
+    print (' Spaceman Game ')
+    print('')
+    print (' You have 7 tries to guess the word correctly')
+    print (' _ ' * len(secret_word))
+    print('')
+
+
 
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
-    guess = input('Guess a letter..')
+    guess = input('Guess a letter.. ')
     letters_guessed = []
     letters_guessed += guess
 
     while (len(guess) != 1 or type(guess) != str):
-        if (guess in letters_guessed):
-            print('No thanks. One letter. Try again.')
-            guess = input('Guess a letter..')
+        print('No thanks. One letter. Try again.')
+        guess = input('Guess a letter..')
     
+    while (is_word_guessed(secret_word, letters_guessed) == False):
+        get_guessed_word (secret_word, letters_guessed)
+
+
+
 
     #TODO: Check if the guessed letter is in the secret or not and give the player feedback
     if (is_guess_in_word(guess, secret_word)):
