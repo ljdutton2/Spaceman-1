@@ -78,6 +78,7 @@ def get_guessed_word (secret_word, letters_guessed):
     # letters_guessed and underscores for the letter that have not been guessed
 
     display_array = ["_"] * len(secret_word)
+    print(display_array)
 
     for letter in letters_guessed:
         i = 0
@@ -85,8 +86,20 @@ def get_guessed_word (secret_word, letters_guessed):
             if (letter == dif_letter):
                 display_array[i] = letter
                 i = i + 1
+    
+
     return display_array
     #pass
+
+display_array2 = ""
+def new_get_guessed_word (secret_word, letters_guessed)
+    for letter in secret_word:
+        if letter in letters_guessed
+            display_array2.append(letter)
+        else:
+            display_array2.append('_')
+    return display_array2
+
 
 
 
@@ -144,11 +157,11 @@ def spaceman(secret_word):
     letters_guessed = []
     letters_guessed += guess
 
-    while (len(guess) != 1 or type(guess) != str):
+    if (len(guess) != 1 and type(guess) != str):
         print('No thanks. One letter. Try again.')
         guess = input('Guess a letter..')
     
-    while (is_word_guessed(secret_word, letters_guessed) == False):
+    if (is_word_guessed(secret_word, letters_guessed) == False):
         get_guessed_word (secret_word, letters_guessed)
 
 
@@ -172,6 +185,8 @@ def spaceman(secret_word):
 
 #These function calls that will start the game
 secret_word = load_word()
-spaceman(secret_word)
+letters_guessed = ["c", "a", "t"]
+new_get_guessed_word('cat', letters_guessed)
 
+#paceman(secret_word)
 
