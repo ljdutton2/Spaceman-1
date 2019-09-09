@@ -61,7 +61,7 @@ def is_word_guessed(secret_word, letters_guessed):
 
 
 
-def get_guessed_word (secret_word, letters_guessed):
+def old_get_guessed_word (secret_word, letters_guessed):
     '''
     Used to get a string showing the correct letters guessed 
     in the secret word and underscores for letters not guessed yet
@@ -77,29 +77,29 @@ def get_guessed_word (secret_word, letters_guessed):
     # letters that have been guessed correctly so far that are saved in 
     # letters_guessed and underscores for the letter that have not been guessed
 
-    display_array = ["_"] * len(secret_word)
-    print(display_array)
+    display_array1 = ["_"] * len(secret_word)
+    print(display_array1)
 
     for letter in letters_guessed:
         i = 0
         for dif_letter in secret_word:
             if (letter == dif_letter):
-                display_array[i] = letter
+                display_array1[i] = letter
                 i = i + 1
     
 
-    return display_array
+    return display_array1
     #pass
 
 
 def new_get_guessed_word (secret_word, letters_guessed):
-    display_array2 = " "
+    display_array = " "
     for letter in secret_word:
         if letter in letters_guessed:
-            display_array2 += letter
+            display_array += (letter + " ")
         else:
-            display_array2 += ('_')
-    return print(display_array2)
+            display_array += ('_ ')
+    return print(display_array)
 
 
 
@@ -139,55 +139,67 @@ def spaceman(secret_word):
     A function that controls the game of spaceman. Will start spaceman in the command line.
     Args:
       secret_word (string): the secret word to guess.
-    '''
+    '''    
 
+
+
+
+    letters_guessed = " "
+    tries = 7
+   
 
     #TODO: show the player information about the game according to the project spec
+    # INTRODUCTION
+    print('')
+    print f('You have {tries} tries to guess the word correctly')
+    #print (' _ ' * len(secret_word))
+    new_get_guessed_word(secret_word, letters_guessed)
+    print('')
 
-    print('')
-    print (' Spaceman Game ')
-    print('')
-    print (' You have 7 tries to guess the word correctly')
-    print (' _ ' * len(secret_word))
-    print('')
 
 
 
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
-    guess = input('Guess a letter.. ')
-    letters_guessed = []
+    # USER_INPUT: GUESS
+    guess = input('Guess one letter.. ')
     letters_guessed += guess
 
-    if (len(guess) != 1 and type(guess) != str):
+    if (len(guess) != 1 or type(guess) != str):
         print('No thanks. One letter. Try again.')
         guess = input('Guess a letter..')
-    
-    if (is_word_guessed(secret_word, letters_guessed) == False):
-        get_guessed_word (secret_word, letters_guessed)
 
 
 
 
     #TODO: Check if the guessed letter is in the secret or not and give the player feedback
     if (is_guess_in_word(guess, secret_word)):
-        return ('nice, ')
+        print ('nice ')
     else:
-        return ('nope, try again')
+        print ('nope, try again')
+
+
 
 
     #TODO: show the guessed word so far
-    get_guessed_word(secret_word, letters_guessed)
+    new_get_guessed_word(secret_word, letters_guessed)
+
+    while (is_word_guessed(secret_word, letters_guessed) == False):
 
 
     #TODO: check if the game has been won or lost
-    is_word_guessed(secret_word, letters_guessed)
-
+    if (is_word_guessed(secret_word, letters_guessed)):
+        return print ('WOOOOOHOOOOOO!!!!!')
+    
+    return  False
 
 
 #These function calls that will start the game
-secret_word = load_word()
-letters_guessed = ["c", "l", "t"]
-new_get_guessed_word('cat', letters_guessed)
 
-#paceman(secret_word)
+#letters_guessed = ["a", "e", "i", "o", "u", "s", "t", "g", "r"]
+#print(secret_word)
+#new_get_guessed_word(secret_word, letters_guessed)
+
+secret_word = load_word()
+while (spaceman(secret_word) == False):
+    spaceman(secret_word)
 
