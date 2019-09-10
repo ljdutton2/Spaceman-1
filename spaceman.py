@@ -176,9 +176,9 @@ def spaceman(secret_word):
             print ("You already used that letter")
             #print (new_get_guessed_word(secret_word, letters_guessed))
 
-        elif (len(guess) != 1 or type(guess) != str):
+        elif not(len(guess) == 1 or guess.isalpha()):
             print('No thanks. One letter. Try again.')
-            guess = input('Guess a letter..')
+            # guess = input('Guess a letter..')
 
         else: 
             letters_guessed += guess
