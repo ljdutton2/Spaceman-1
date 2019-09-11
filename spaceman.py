@@ -120,11 +120,15 @@ def is_guess_in_word(guess, secret_word):
         bool: True if the guess is in the secret_word, False otherwise
     '''
     #TODO: check if the letter guess is in the secret word
+    if guess in secret_word:
+        return True
+    else:
+        return False
 
-    for letter in secret_word:
-       if (guess == letter):
-            return True
-    return False
+    #for letter in secret_word:
+    #   if (guess == letter):
+    #        return True
+    #return False
 
     #pass
 
@@ -150,7 +154,8 @@ def spaceman(secret_word):
 
 
     print(secret_word)
-   
+    
+
     while (is_word_guessed(secret_word, letters_guessed) == False and tries>0):
         
 
@@ -177,7 +182,7 @@ def spaceman(secret_word):
             #print (new_get_guessed_word(secret_word, letters_guessed))
 
         elif not(len(guess) == 1 and guess.isalpha()):
-            print('No thanks. One letter. Try again.')
+            print('One letter. Try again.')
             # guess = input('Guess a letter..')
 
         else: 
