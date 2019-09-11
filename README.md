@@ -1,3 +1,4 @@
 <h1> Spaceman </h1>
-<p> </p>
+
+<p> Hangman game </p>
 <img src="SpaceManFlow.png"/>
