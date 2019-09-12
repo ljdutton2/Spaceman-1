@@ -60,7 +60,7 @@ def is_word_guessed(secret_word, letters_guessed):
 
 
 
-
+## 
 
 def old_get_guessed_word (secret_word, letters_guessed):
     '''
@@ -92,7 +92,7 @@ def old_get_guessed_word (secret_word, letters_guessed):
     return display_array1
     #pass
 
-
+##I like that you made a variable called display! It's logical and makes appending letters easier :)
 def new_get_guessed_word (secret_word, letters_guessed):
     display = " "
     for letter in secret_word:
@@ -145,7 +145,7 @@ def spaceman(secret_word):
       secret_word (string): the secret word to guess.
     '''    
 
-
+     
     compliments = ('Nice!', 'Cha-ching!', 'Woot!', 'Great!', 'Congrats')
     compliment = choice(compliments)
 
@@ -161,6 +161,8 @@ def spaceman(secret_word):
 
         #TODO: show the player information about the game according to the project spec
         # INTRODUCTION
+        
+        ## Awesome how you edited this to show how many tries the user gets based on the secret_word!!
         
         print (f'You have {tries} tries to guess the word correctly')
         print(" ** Correct guesses don't lose tries ** ")
